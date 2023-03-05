@@ -1,0 +1,16 @@
+.footer {
+    width: 100%;
+    height: 16rem;
+    background-color: #35156B;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 1rem;
+}
+.footer h3 {
+    font-size: 1.3rem;
+}
