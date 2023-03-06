@@ -9,6 +9,7 @@ import styles from '../styles/form.module.css'
 
 import { Codes } from '../libs/CodeFlags';
 import { NetworkList, IconNetwork } from '../libs/Networks';
+import { fetchData } from '@/libs/FethData';
 
 export default function Home() {
     let links = ['One', 'Two', 'Three', 'Four', 'Five'];
@@ -86,11 +87,11 @@ const FetchDataAirtable = async (data) => {
         networkFive: data.networkFiveLink === '' ? null : data.networkFive,
     }
 
-    const response = await fetch("https://api.airtable.com/v0/app6QkHya20rCFqu4/tbl6L53IbxznTdJxS", {
+    const result = fetchData("https://api.airtable.com/v0/app6QkHya20rCFqu4/tbl6L53IbxznTdJxS", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer patFC3g5n73Ds1nMx.9cc868ad525d3156d59c9f70ea8b7d03d7e5a8561d469f039e1125f004f1ae2e"
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
         },
         body: JSON.stringify({
             "records": [
@@ -103,7 +104,6 @@ const FetchDataAirtable = async (data) => {
         })
     })
 
-    const result = await response.json();
     console.log("HISTÓRICA AGREGADA CON ÉXITO");
 }
 
