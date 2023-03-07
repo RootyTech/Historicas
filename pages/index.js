@@ -1,29 +1,59 @@
 import Head from 'next/head'
-import { useEffect, useState, useRef, useLayoutEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { fetchData } from '../libs/FethData';
 import { Codes } from '../libs/CodeFlags';
 import { Footer } from "@/components/Footer";
 import { Historica } from "@/components/Historica";
 import { Welcome } from "@/components/Welcome";
+import { GetHistorica, SeenHistorica } from '../libs/GetHistoricaData';
+import { generateRandomNumber } from '@/libs/RandomNumber';
+
+import { Firebase } from '../libs/Firebase';
 
 export default function Home() {
   const [historica, setHistorica] = useState();
 
   useEffect(() => {
+
+    Firebase();
+
     const AirtableData = async () => {
 
-      const dataResponse = await fetchData('https://api.airtable.com/v0/app6QkHya20rCFqu4/tbl6L53IbxznTdJxS?filterByFormula=id=21', {
+      const validateToday = await fetchData(`https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89?filterByFormula=Date=${new Date().toJSON().slice(0,10)}`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
         }
       });
 
-      const Today = dataResponse.records[0];
-      let flag = Codes.filter((item) => item.name === Today.fields.country)[0].code
-      Today.fields.country = flag;
-      setHistorica(Today);
-      console.log(Today);
+      if (validateToday.records.length == 0) {
+
+            let IdRandom = generateRandomNumber(1, 21);
+
+            const result = await fetchData("https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
+            },
+            body: JSON.stringify({
+                "records": [
+                    {
+                        "fields": {
+                            IdHistorica: IdRandom,
+                            Date: new Date().toJSON().slice(0,10)
+                        }
+                    }
+                ]
+            })
+        })
+
+        GetHistorica(result.records[0].fields.IdHistorica, setHistorica);
+
+      } else {
+        GetHistorica(validateToday.records[0].fields.IdHistorica, setHistorica);
+      }
+
     }
     AirtableData();
 
