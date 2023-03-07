@@ -57,8 +57,9 @@ export default function Home() {
     ];
 
     const shareData = {
-      files: filesArray,
-      url: 'http://localhost:3000'
+      title: "La Histórica del día",
+      text: `La histórica del día es: ${historica.fields.fullname} 💜 encuentra más información en 👇`,
+      url: 'https://historicas.vercel.app/'
     };
 
     navigator.share(shareData);
