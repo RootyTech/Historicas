@@ -3,7 +3,7 @@
   "short_name": "Históricas",
   "theme_color": "#6327BD",
   "background_color": "#000",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
