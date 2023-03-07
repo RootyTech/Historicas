@@ -6,11 +6,15 @@ import { GetHistorica, SeenHistorica } from '../libs/GetHistoricaData';
 import html2canvas from 'html2canvas';
 import { generateRandomNumber } from '@/libs/RandomNumber';
 
+import { Firebase } from '../libs/Firebase';
+
 export default function Home() {
 
   const [historica, setHistorica] = useState();
 
   useEffect(() => {
+
+    Firebase();
 
     const AirtableData = async () => {
 
