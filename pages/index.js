@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import { useEffect, useState, useRef, useLayoutEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { fetchData } from '../libs/FethData';
-import { Codes } from '../libs/CodeFlags';
+import { GetHistorica, SeenHistorica } from '../libs/GetHistoricaData';
 
 import html2canvas from 'html2canvas';
+import { generateRandomNumber } from '@/libs/RandomNumber';
 
 export default function Home() {
 
@@ -13,17 +14,40 @@ export default function Home() {
 
     const AirtableData = async () => {
 
-      const dataResponse = await fetchData('https://api.airtable.com/v0/app6QkHya20rCFqu4/tbl6L53IbxznTdJxS?maxRecords=1&sort%5B0%5D%5Bdirection%5D=asc&sort%5B0%5D%5Bfield%5D=id&filterByFormula=stateSeen=FALSE()', {
+      const validateToday = await fetchData(`https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89?filterByFormula=Date="2023-03-07"`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
         }
       });
 
-      const Today = dataResponse.records[0];
-      let flag = Codes.filter((item) => item.name === Today.fields.country)[0].code
-      Today.fields.country = flag;
-      setHistorica(Today);
+      if (validateToday.records.length == 0) {
+
+            let IdRandom = generateRandomNumber(1, 21);
+
+            const result = await fetchData("https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
+            },
+            body: JSON.stringify({
+                "records": [
+                    {
+                        "fields": {
+                            IdHistorica: IdRandom,
+                            Date: new Date().toJSON().slice(0,10)
+                        }
+                    }
+                ]
+            })
+        })
+
+        GetHistorica(result.records[0].fields.IdHistorica, setHistorica);
+
+      } else {
+        GetHistorica(validateToday.records[0].fields.IdHistorica, setHistorica);
+      }
 
     }
     AirtableData();
