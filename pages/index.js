@@ -15,6 +15,10 @@ export default function Home() {
 
   useEffect(() => {
 
+    if(navigator.userAgent.includes("Instagram")){
+        window.location.href = "https://mywebsite.com/DummyBytes";
+    }
+
     const FirebaseTest = async () => {
 
       let resultFirebase = Firebase();
@@ -85,6 +89,8 @@ export default function Home() {
 
     }
     AirtableData();
+
+    return () => { }
 
   }, []);
 
