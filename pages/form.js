@@ -156,8 +156,8 @@ export default function Home() {
           <label htmlFor="description">Descripción*</label>
           <input id='description' name="description" type="text" required minLength="20" maxLength="200"/>
           
-          <label htmlFor="photo">Foto</label>
-          <input id='photo' name="photo" type="text" />
+          <label htmlFor="photo">Foto (URL pública de la foto)</label>
+          <input id='photo' name="photo" type="text"/>
           {
             urlMsj.includes("photo") ?
             <span>👀 La dirección de la imagen tiene un error</span>
