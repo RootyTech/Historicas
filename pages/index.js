@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
 
     if(navigator.userAgent.includes("Instagram")){
-        window.location.href = "https://mywebsite.com/DummyBytes";
+        window.location.href = "https://historicas.vercel.app";
     }
 
     const FirebaseTest = async () => {
