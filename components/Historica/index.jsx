@@ -156,7 +156,7 @@ export const Historica = ({data}) => {
                 </section>
             </section>
             <section className={styles.share_historica}>
-                <p>Enseñale a todxs en internet <span>La Histórica del día</span></p>
+                <p>Enséñale a todxs en internet <span>La Histórica del día</span></p>
                 <button onClick={(event) => share(event)} className={styles.button}>
                     <FaShareAlt/>
                     Compatir
