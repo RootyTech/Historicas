@@ -38,7 +38,7 @@ export const Historica = ({data}) => {
     const [image, setImage] = useState({width:0, height:0});
 
     const share = async (event) => {
-        let elementHTML = document.getElementById('capture')
+        let elementHTML = document.getElementById('capture');
         const canvasStory = await html2canvas(elementHTML, {
           letterRendering: 1,
           allowTaint: true,
@@ -68,6 +68,32 @@ export const Historica = ({data}) => {
     }
 
     const download = async (event) => {
+        let elementHTML = document.getElementById('capture');
+    
+        const canvasStory = await html2canvas(elementHTML, {
+          letterRendering: 1,
+          allowTaint: true,
+          useCORS: true,
+        });
+    
+        const dataUrl = canvasStory.toDataURL();
+        const blob = await (await fetch(dataUrl)).blob();
+    
+        const filesArray = [
+          new File(
+            [blob],
+            'historica.png',
+            {
+              type: blob.type,
+              lastModified: new Date().getTime()
+            }
+          )
+        ];
+    
+        let link = document.createElement('a');
+        link.download = 'historica.png';
+        link.href = dataUrl;
+        link.click();
     }
 
     const calPhoto = (url) => {
