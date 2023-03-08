@@ -16,12 +16,12 @@ export default function Document() {
         <meta property="og:url" content="https://historicas.vercel.app"/>
         <meta property="og:title" content="Históricas"/>
         <meta property="og:description" content="Instala la app y descubre cada día una una mujer histórica 🔔"/>
-        <meta property="og:image" content="https://historicas.vercel.app/historicasop.jpg"/>
+        <meta property="og:image" content="https://historicas.vercel.app/historicasop-min.jpg"/>
         <meta property="twitter:card" content="summary_large_image"/>
         <meta property="twitter:url" content="https://historicas.vercel.app"/>
         <meta property="twitter:title" content="Históricas"/>
         <meta property="twitter:description" content="Instala la app y descubre cada día una una mujer histórica 🔔"/>
-        <meta property="twitter:image" content="https://historicas.vercel.app/historicasop.jpg"/>
+        <meta property="twitter:image" content="https://historicas.vercel.app/historicasop-min.jpg"/>
         <meta name="apple-mobile-web-app-title" content="Históricas"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
