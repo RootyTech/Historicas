@@ -22,6 +22,10 @@ export default function Document() {
         <meta property="twitter:title" content="Históricas"/>
         <meta property="twitter:description" content="Instala la app y descubre cada día una una mujer histórica 🔔"/>
         <meta property="twitter:image" content="/historicasop.jpg"/>
+        <meta name="apple-mobile-web-app-title" content="Históricas"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <link rel="apple-touch-startup-image" href="/apple-touch-icon-144x144.png" />
       </Head>
       <body>
         <Main />
