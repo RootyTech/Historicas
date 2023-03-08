@@ -70,6 +70,7 @@ export default function Home() {
         }
         setUrlMsj(fields);
         !fields.length && FetchDataAirtable(data);
+        document.getElementById('form_send').reset();
         // !fields.length && console.log("data a enviar", data);
         /**aqui se mira si el fields tiene algo y si tiene no se hace el post, de lo contrario si xd */
     }
@@ -126,7 +127,7 @@ export default function Home() {
         {/* <h1 className={styles.title}>Históricas</h1> */}
         {/* /**Logo**/}
         <p>Compartele al mundo esa mujer que inspira y lucha con nosotras día a día para que en la historia estemos todxs 💟🌈</p>
-        <form className={styles.form} onSubmit={(event) => sendDataForm(event)}>
+        <form className={styles.form} id="form_send" onSubmit={(event) => sendDataForm(event)}>
           <label htmlFor="fullname">Nombre*</label>
           <input id='fullname' name="fullname" type="text" required />
           
