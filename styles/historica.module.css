@@ -2,16 +2,30 @@
     width: 100%;
     height: 20rem;
 }
-.historica_data_header img {
-    /* width: 100%;
-    height: 100%; */
+/* .historica_data_header img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+} */
+.imagesContainer {
+    width: 100%;
+    height: 320px;
+}
+.imagesContainer > div {
+    position: unset !important;
+}
+.photo {
+    width: 100%;
+    height: 320px !important;
+    object-fit: cover;
+    position: relative !important;
+
 }
 .historica_data_header section {
     width: 100%;
     height: max-content;
     position: relative;
-    bottom: 80px;
+    bottom: 75px;
     background: rgba(52, 52, 52, 0.6);
     backdrop-filter: blur(10px);
     color: white;
