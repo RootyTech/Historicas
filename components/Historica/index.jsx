@@ -61,9 +61,8 @@ export const Historica = ({data}) => {
 
         const shareData = {
           title: "Histórica del día",
-          text: "Conoce a la histórica del día 💜",
-          files: filesArray,
-          url: 'https://historicas.vercel.app/'
+          text: "Conoce a la histórica 💜 del día en 👉🏾 https://historicas.vercel.app 👈🏾",
+          files: filesArray
         };
 
         navigator.share(shareData);
