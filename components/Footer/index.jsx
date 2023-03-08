@@ -23,8 +23,9 @@ export const Footer = () => {
         la sociedad 😊
       </span>
       <h3>Hecho con 💜</h3>
-
-      <Image src={Logo} alt="Rooty logo" width={40} height={40} />
+      <a href="https://www.instagram.com/rooty.tech/">
+        <Image src={Logo} alt="Rooty logo" width={40} height={40} />
+      </a>
     </footer>
   );
 };
