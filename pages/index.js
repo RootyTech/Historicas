@@ -15,6 +15,13 @@ export default function Home() {
 
   useEffect(() => {
 
+    if(navigator.userAgent.includes("Instagram")){
+        const redirect = document.createElement('a');
+        redirect.href = "https://historicas.vercel.app";
+        redirect.target = "_blank";
+        redirect.click();
+    }
+
     const FirebaseTest = async () => {
 
       let resultFirebase = Firebase();
@@ -85,6 +92,8 @@ export default function Home() {
 
     }
     AirtableData();
+
+    return () => { }
 
   }, []);
 
