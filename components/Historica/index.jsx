@@ -118,7 +118,7 @@ export const Historica = ({data}) => {
             <section id='capture'>
                 <div className={styles.historica_data_header}>
                     {/* <div style={background}></div> */}
-                    <Image src={photo} width="800" height="320" alt="Historica image"/>
+                    <Image src={photo} width="600" height="320" alt="Historica image"/>
                     {/* <img src={photo} alt="Historica image" /> */}
 
                     <section>
