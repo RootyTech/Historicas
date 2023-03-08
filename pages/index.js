@@ -54,9 +54,9 @@ export default function Home() {
       if (dateToday.length == 0) {
 
             let oldRadom = validateToday.records.map((item) => item.fields.IdHistorica )
-            let IdRandom = generateRandomNumber(1, 21);
+            let IdRandom = generateRandomNumber(1, 31);
             while (oldRadom.includes(IdRandom)) {
-              IdRandom = generateRandomNumber(1, 21);
+              IdRandom = generateRandomNumber(1, 31);
             }
 
             const result = await fetchData("https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89", {
