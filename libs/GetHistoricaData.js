@@ -11,10 +11,9 @@ export const GetHistorica = async (Id, setHistorica) => {
 
   const Today = dataResponse.records[0];
   let flag = Codes.filter((item) => item.name === Today.fields.country)[0].code
-  Today.fields.country = flag;
+  Today.fields.code = flag;
   SeenHistorica(Today.id)
   setHistorica(Today);
-
 }
 
 export const SeenHistorica = async (IdRecord) => {

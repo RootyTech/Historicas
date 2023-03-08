@@ -3,9 +3,11 @@ import html2canvas from 'html2canvas';
 import Link from 'next/link'
 import { 
     FaTwitter, FaYoutube, FaFacebook, FaGoodreads, FaGithub, 
-    FaBehance, FaDribbble, FaTiktok, FaTwitch, FaLinkedin, FaSpotify, FaLink
+    FaBehance, FaDribbble, FaTiktok, FaTwitch, FaLinkedin, FaSpotify,
+    FaLink, FaShareAlt, FaPlus
 } from "react-icons/fa";
 import {AiFillInstagram} from "react-icons/ai"
+import {FiDownload} from "react-icons/fi"
 import Image from "next/image";
 import { useEffect, useState } from "react";
 export const Historica = ({data}) => {
@@ -13,6 +15,7 @@ export const Historica = ({data}) => {
         photo,
         fullname,
         country,
+        code,
         description,
         networkOne,
         networkOneLink,
@@ -41,8 +44,6 @@ export const Historica = ({data}) => {
           allowTaint: true,
           useCORS: true,
         });
-
-        // document.body.appendChild(canvasStory);
 
         const dataUrl = canvasStory.toDataURL();
         const blob = await (await fetch(dataUrl)).blob();
@@ -94,7 +95,7 @@ export const Historica = ({data}) => {
                     <section>
                         <h1>{fullname}</h1>
                         <span>
-                            <img src={`https://flagcdn.com/w80/${country.toLocaleLowerCase()}.png`} alt="country flag" />
+                            <img src={`https://flagcdn.com/w80/${code.toLocaleLowerCase()}.png`} alt="country flag" />
                             {" "+country}</span>
                     </section>
                 </div>
@@ -125,14 +126,20 @@ export const Historica = ({data}) => {
             </section>
             <section className={styles.share_historica}>
                 <p>Enseñale a todxs en internet <span>La Histórica del día</span></p>
-                <button onClick={(event) => share(event)} className={styles.button}>Icon Compatir</button>
-                <button id="download" onClick={(event) => download(event)} className={styles.button}>Icon Descargar</button>
+                <button onClick={(event) => share(event)} className={styles.button}>
+                    <FaShareAlt/>
+                    Compatir
+                </button>
+                <button id="download" onClick={(event) => download(event)} className={styles.button}>
+                    <FiDownload />
+                    Descargar</button>
             </section>
             <section className={styles.add_historica}>
                 <p>¿Conoces a más mujeres históricas? </p>
                 <div>
                 <Link href="/form">
-                    Icon Añadir
+                    <FaPlus />
+                    Añadir
                 </Link>
                 </div>
             </section>

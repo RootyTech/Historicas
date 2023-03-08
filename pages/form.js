@@ -4,9 +4,8 @@ import Head from 'next/head'
 import { FaLink } from "react-icons/fa";
 import { Footer } from '@/components/Footer';
 import Star from '../assets/star.png';
-
+import { useRouter } from 'next/router'
 import styles from '../styles/form.module.css'
-
 import { Codes } from '../libs/CodeFlags';
 import { NetworkList, IconNetwork } from '../libs/Networks';
 import { fetchData } from '@/libs/FethData';
@@ -75,37 +74,42 @@ export default function Home() {
         /**aqui se mira si el fields tiene algo y si tiene no se hace el post, de lo contrario si xd */
     }
 
-const FetchDataAirtable = async (data) => {
+  const FetchDataAirtable = async (data) => {
 
-    let FinalFormatData = {
-        ...data,
-        country: Codes.filter((item) => item.code === data.country )[0].name,
-        networkOne: data.networkOneLink === '' ? null : data.networkOne,
-        networkTwo: data.networkTwoLink === '' ? null : data.networkTwo,
-        networkThree: data.networkThreeLink === '' ? null : data.networkThree,
-        networkFour: data.networkFourLink === '' ? null : data.networkFour,
-        networkFive: data.networkFiveLink === '' ? null : data.networkFive,
-    }
+      let FinalFormatData = {
+          ...data,
+          country: Codes.filter((item) => item.code === data.country )[0].name,
+          networkOne: data.networkOneLink === '' ? null : data.networkOne,
+          networkTwo: data.networkTwoLink === '' ? null : data.networkTwo,
+          networkThree: data.networkThreeLink === '' ? null : data.networkThree,
+          networkFour: data.networkFourLink === '' ? null : data.networkFour,
+          networkFive: data.networkFiveLink === '' ? null : data.networkFive,
+      }
 
-    const result = fetchData("https://api.airtable.com/v0/app6QkHya20rCFqu4/tbl6L53IbxznTdJxS", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
-        },
-        body: JSON.stringify({
-            "records": [
-                {
-                    "fields": {
-                        ...FinalFormatData,
-                    }
-                }
-            ]
-        })
-    })
+      const result = fetchData("https://api.airtable.com/v0/app6QkHya20rCFqu4/tbl6L53IbxznTdJxS", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
+          },
+          body: JSON.stringify({
+              "records": [
+                  {
+                      "fields": {
+                          ...FinalFormatData,
+                      }
+                  }
+              ]
+          })
+      })
 
-    console.log("HISTÓRICA AGREGADA CON ÉXITO");
-}
+      console.log("HISTÓRICA AGREGADA CON ÉXITO");
+  }
+
+  const router = useRouter();
+  const goToHome = () => {
+    router.push('/')
+  }
 
   return (
     <>
@@ -116,7 +120,10 @@ const FetchDataAirtable = async (data) => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <main id='top' className={styles.containerForm}>
-        <h1 className={styles.title}>Históricas</h1>
+        <div className={styles.logo}>
+          <img src='./images/logo_black.png' alt='Logo historicas' onClick={goToHome}/>
+        </div>
+        {/* <h1 className={styles.title}>Históricas</h1> */}
         {/* /**Logo**/}
         <p>Compartele al mundo esa mujer que inspira y lucha con nosotras día a día para que en la historia estemos todxs 💟🌈</p>
         <form className={styles.form} onSubmit={(event) => sendDataForm(event)}>

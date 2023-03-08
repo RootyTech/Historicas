@@ -1,0 +1,49 @@
+.welcome_container {
+    width: 100%;
+    height: 100vh;
+    background-color: #35156B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+.welcome_container h1 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-family: 'Play', sans-serif;
+}
+.welcome_container .logo img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+.welcome_container .install {
+    font-weight: 500;
+}
+.welcome_container span {
+    font-size: 1.3rem;
+}
+.welcome_container .btn {
+    width: 100%;
+    height: 2.5rem;
+    border: 2px solid #35C773;
+    border-radius: 20px;
+    background-color: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.welcome_container .btn svg {
+    font-size: 1.5rem;
+    color: #35C773;
+    font-weight: 900;
+}
+.welcome_container .ux {
+    font-size: 14px;
+    text-decoration: underline;
+}

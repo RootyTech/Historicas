@@ -3,6 +3,11 @@
     text-align: center;
     margin-top: 2rem;
 }
+.logo img {
+    display: block;
+    margin: 1rem auto;
+    width: 100%;
+}
 .containerForm {
     width: 100%;
     display: flex;
@@ -16,6 +21,7 @@
     text-align: center;
     margin: 1rem 0;
     color: #2E2E2E;
+    font-size: 14px;
 }
 .containerForm span {
     margin-top: 20px;
@@ -53,9 +59,6 @@
     width: 20px;
     height: 20px;
 }
-.country select {
-    width: 90;
-}
 .country {
     width: 100%;
     display: flex;
@@ -67,7 +70,7 @@
     height: 20px;
 }
 .country select {
-    width: 90%;
+    width: 100%;
 }
 .social_media {
     margin-top: 1rem;
@@ -79,6 +82,12 @@
     align-items: center;
     margin-bottom: 1rem;
     gap: 5px;
+}
+.social_media div:nth-child(2) {
+    width: 70%;
+}
+.social_media div input {
+    width: 100%;
 }
 .btn {
     width: 10rem;

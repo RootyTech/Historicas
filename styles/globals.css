@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 * {
   box-sizing: border-box;
   padding: 0;
@@ -21,4 +21,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+@media only screen and (min-width: 600px) {
+    body {
+        width: 40%;
+        margin: 0 auto;
+    }
 }
