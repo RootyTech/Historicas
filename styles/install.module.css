@@ -1,0 +1,13 @@
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.container h1 {
+    color: #35C773;
+}
+.container p {
+    margin: 2rem 0;
+}
