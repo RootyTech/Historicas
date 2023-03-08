@@ -18,8 +18,7 @@ export default function Home() {
     Firebase();
 
     const AirtableData = async () => {
-
-      const validateToday = await fetchData(`https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89?filterByFormula=Date=${new Date().toJSON().slice(0,10)}`, {
+      const validateToday = await fetchData(`https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89?filterByFormula=Date="${new Date().toJSON().slice(0,10)}"`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
