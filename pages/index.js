@@ -18,16 +18,22 @@ export default function Home() {
     Firebase();
 
     const AirtableData = async () => {
-      const validateToday = await fetchData(`https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89?filterByFormula=Date="${new Date().toJSON().slice(0,10)}"`, {
+      const validateToday = await fetchData(`https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`
         }
       });
 
-      if (validateToday.records.length == 0) {
+      let dateToday = validateToday.records.filter((item) => item.fields.Date === new Date().toJSON().slice(0,10));
 
+      if (dateToday.length == 0) {
+
+            let oldRadom = validateToday.records.map((item) => item.fields.IdHistorica )
             let IdRandom = generateRandomNumber(1, 21);
+            while (oldRadom.includes(IdRandom)) {
+              IdRandom = generateRandomNumber(1, 21);
+            }
 
             const result = await fetchData("https://api.airtable.com/v0/app6QkHya20rCFqu4/tblVznChX1OvuPF89", {
             method: "POST",
