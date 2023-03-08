@@ -28,10 +28,10 @@ export default function Install() {
             <h1>Guia de instalación</h1>
             
             <p><BsAndroid /> Android</p>
-            <video src="./images/TutorialAndroid.mp4" controls muted autoPlay loop width="250">Video Tutorial Android</video>
+            <video src="./images/TutorialAndroid.mp4" controls muted autoPlay loop width="250" playsinline>Video Tutorial Android</video>
             
             <p><BsApple />IOS</p>
-            <video src="./images/TutorialiOS.mp4" controls muted autoPlay loop width="250">Video Tutorial IOS</video>
+            <video src="./images/TutorialiOS.mp4" controls muted autoPlay loop width="250" playsinline>Video Tutorial IOS</video>
         </main>
         <Footer />
     </>
