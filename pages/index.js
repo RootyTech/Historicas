@@ -16,7 +16,10 @@ export default function Home() {
   useEffect(() => {
 
     if(navigator.userAgent.includes("Instagram")){
-        window.location.href = "https://historicas.vercel.app";
+        const redirect = document.createElement('a');
+        redirect.href = "https://historicas.vercel.app";
+        redirect.target = "_blank";
+        redirect.click();
     }
 
     const FirebaseTest = async () => {
