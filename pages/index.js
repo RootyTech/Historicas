@@ -87,7 +87,7 @@ export default function Home() {
         GetHistorica(result.records[0].fields.IdHistorica, setHistorica);
 
       } else {
-        GetHistorica(validateToday.records[0].fields.IdHistorica, setHistorica);
+        GetHistorica(dateToday[0].fields.IdHistorica, setHistorica);
       }
 
     }
