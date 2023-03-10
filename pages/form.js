@@ -9,6 +9,7 @@ import styles from '../styles/form.module.css'
 import { Codes } from '../libs/CodeFlags';
 import { NetworkList, IconNetwork } from '../libs/Networks';
 import { fetchData } from '@/libs/FethData';
+import { Toaster, toast } from 'react-hot-toast';
 
 export default function Home() {
     let links = ['One', 'Two', 'Three', 'Four', 'Five'];
@@ -105,6 +106,7 @@ export default function Home() {
       })
 
       console.log("HISTÓRICA AGREGADA CON ÉXITO");
+      toast.success('HISTÓRICA AGREGADA CON ÉXITO');
   }
 
   const router = useRouter();
@@ -205,6 +207,7 @@ export default function Home() {
             Guardar
           </button>
         </form>
+        <Toaster position="bottom-center" reverseOrder={false} />
       </main>
       <Footer />
     </>
