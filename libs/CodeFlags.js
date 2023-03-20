@@ -604,7 +604,7 @@ export const Codes = [
         "code": "MX"
     },
     {
-        "name": "Malaysia",
+        "name": "Malasia",
         "code": "MY"
     },
     {
